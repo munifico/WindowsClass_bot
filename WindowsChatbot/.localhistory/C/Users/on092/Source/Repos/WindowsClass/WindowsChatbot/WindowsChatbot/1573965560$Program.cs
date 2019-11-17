@@ -23,7 +23,7 @@ namespace WindowsChatbot
         //임시방편 유저 리스트
         private static List<User> Users = new List<User>();
 
-        //영어리스트
+        //임시방편 유저 리스트
         private static List<EngWord> Words = new List<EngWord>();
 
 
@@ -47,6 +47,9 @@ namespace WindowsChatbot
                 Words.Add(new EngWord(show, "{0}"));
                 Console.WriteLine("{0}", show);
             }
+
+            Words.Add(new EngWord("the", "그, 그럴수록, 더욱더"));
+            Words.Add(new EngWord("of", "~의, ~으로부터, ~을"));
 
 
 

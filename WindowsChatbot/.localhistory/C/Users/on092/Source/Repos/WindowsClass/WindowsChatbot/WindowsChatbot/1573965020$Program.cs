@@ -23,7 +23,7 @@ namespace WindowsChatbot
         //임시방편 유저 리스트
         private static List<User> Users = new List<User>();
 
-        //영어리스트
+        //임시방편 유저 리스트
         private static List<EngWord> Words = new List<EngWord>();
 
 
@@ -41,12 +41,14 @@ namespace WindowsChatbot
             Users.Add(new User("강석천", 23));
 
             //영어단어 리스트 추가
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\on092\Source\Repos\WindowsClass\WindowsChatbot\WindowsChatbot\EngWordtxt\Vocabulary 13000.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\on092\Desktop\Vocabulary 13000.txt");
             foreach (string show in lines)
             {
-                Words.Add(new EngWord(show, "{0}"));
+                Words.Add(new EngWord("{0}", show));
                 Console.WriteLine("{0}", show);
             }
+            Words.Add(new EngWord("the", "그, 그럴수록, 더욱더"));
+            Words.Add(new EngWord("of", "~의, ~으로부터, ~을"));
 
 
 

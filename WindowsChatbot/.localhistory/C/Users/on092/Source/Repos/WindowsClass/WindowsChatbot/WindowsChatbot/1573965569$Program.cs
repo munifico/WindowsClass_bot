@@ -23,7 +23,7 @@ namespace WindowsChatbot
         //임시방편 유저 리스트
         private static List<User> Users = new List<User>();
 
-        //영어리스트
+        //임시방편 유저 리스트
         private static List<EngWord> Words = new List<EngWord>();
 
 

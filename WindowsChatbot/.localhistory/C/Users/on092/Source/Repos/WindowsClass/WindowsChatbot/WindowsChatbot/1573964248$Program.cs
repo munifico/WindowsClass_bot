@@ -23,7 +23,7 @@ namespace WindowsChatbot
         //임시방편 유저 리스트
         private static List<User> Users = new List<User>();
 
-        //영어리스트
+        //임시방편 유저 리스트
         private static List<EngWord> Words = new List<EngWord>();
 
 
@@ -41,12 +41,7 @@ namespace WindowsChatbot
             Users.Add(new User("강석천", 23));
 
             //영어단어 리스트 추가
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\on092\Source\Repos\WindowsClass\WindowsChatbot\WindowsChatbot\EngWordtxt\Vocabulary 13000.txt");
-            foreach (string show in lines)
-            {
-                Words.Add(new EngWord(show, "{0}"));
-                Console.WriteLine("{0}", show);
-            }
+            Words.Add(new EngWord("the", "그, 그럴수록, 더욱더"));
 
 
 
@@ -114,9 +109,8 @@ namespace WindowsChatbot
                 engword[message.Chat.Id] = EngState.none;
 
                 string _message = string.Empty;
-                await Bot.SendTextMessageAsync(message.Chat.Id, "오늘의 영어단어 10개");
-                //Words.ForEach(x => _message += string.Format("영어단어 : {0}\n 뜻 : {1}\r\n", x.Word, x.KorWord));
-                Words.ForEach(x => _message += string.Format("영어단어 : {0}\n", x.Word));
+                Words.ForEach(x => _message += string.Format("영어단어 : {0}, 뜻 : {1}\r\n", x.Word, x.KorWord));
+
                 await Bot.SendTextMessageAsync(message.Chat.Id, _message);
             }
 
@@ -261,7 +255,7 @@ namespace WindowsChatbot
         }
 
         public EngWord() : this("none", "") { }
-        public EngWord(string word, string korWord)
+        public EngWord(string Word, string korWord)
         {
             this.Word = word;
             this.KorWord = korWord;

@@ -59,6 +59,7 @@ namespace WindowsChatbot
                     if(a[i] == a[j])
                     {
                         i--;
+                        break;
                     }
                 }
                 Words.Add(new EngWord(lines[a[i]], "{0}"));
@@ -131,7 +132,6 @@ namespace WindowsChatbot
                 string _message = string.Empty;
                 await Bot.SendTextMessageAsync(message.Chat.Id, "오늘의 영어단어 10개");
                 //Words.ForEach(x => _message += string.Format("영어단어 : {0}\n 뜻 : {1}\r\n", x.Word, x.KorWord));
-
                 Words.ForEach(x => _message += string.Format("영어단어 : {0}\n", x.Word));
                 await Bot.SendTextMessageAsync(message.Chat.Id, _message);
             }

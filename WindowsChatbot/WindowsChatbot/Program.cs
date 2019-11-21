@@ -41,15 +41,30 @@ namespace WindowsChatbot
             Users.Add(new User("강석천", 23));
 
             //영어단어 리스트 추가
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\on092\Source\Repos\WindowsClass\WindowsChatbot\WindowsChatbot\EngWordtxt\Vocabulary 13000.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\user\source\repos\lunevilia\WindowsClass_bot\WindowsChatbot\WindowsChatbot\EngWordtxt\Vocabulary 13000.txt");
+            /*
             foreach (string show in lines)
             {
                 Words.Add(new EngWord(show, "{0}"));
                 Console.WriteLine("{0}", show);
             }
-
-
-
+            */
+            Random rnd = new Random();
+            int[] a = new int[10];
+            for(int i = 0; i< 10; i++)
+            {
+                a[i] = rnd.Next(1300);
+                for(int j = 0; j<i; j++)
+                {
+                    if(a[i] == a[j])
+                    {
+                        i--;
+                    }
+                }
+                Words.Add(new EngWord(lines[a[i]], "{0}"));
+                Console.WriteLine(lines[a[i]]);
+            }
+          
 
             ///봇 이벤트 추가
             Bot.OnMessage += Bot_OnMessage;
@@ -116,6 +131,7 @@ namespace WindowsChatbot
                 string _message = string.Empty;
                 await Bot.SendTextMessageAsync(message.Chat.Id, "오늘의 영어단어 10개");
                 //Words.ForEach(x => _message += string.Format("영어단어 : {0}\n 뜻 : {1}\r\n", x.Word, x.KorWord));
+
                 Words.ForEach(x => _message += string.Format("영어단어 : {0}\n", x.Word));
                 await Bot.SendTextMessageAsync(message.Chat.Id, _message);
             }
